@@ -8,8 +8,11 @@ import {Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title: any = 'app.Component Testing Location Services';
-  closestOffice: string[];
+  title = 'Kforce Newsletter';
+  closestOfficeCity: string;
+  closestOfficeSpecialityArr: string[][];
+  FATSpeciality: string;
+  GSpeciality: string;
   distance: number;
   locationSucceeded = false;
   location: string[] = [];
@@ -36,33 +39,56 @@ export class AppComponent {
      this.officeLoop();
   }
   officeLoop() {
+    let specialities = [];
     const cities = this.officeLocations.cities;
     let tempDist = 10000;
-    let closest: string[];
+    let closestOffice: string[];
     const curLat = this.location[0];
     const curLong = this.location[1];
-    // curLat = 44.348431;
-    // curLong = -100.281300;
+     // curLat = 37.988102;
+     // curLong =  -103.594792;
     Object.keys(cities).forEach((city) => {
       const offices = cities[city];
       Object.keys(offices).forEach((office) => {
         const lat = offices[office].coords[0];
         const long = offices[office].coords[1];
-        // console.log(city,office, lat,long);
         const dist = parseFloat(this.getDist.getDistance(curLat, curLong, lat, long, 2));
-        // console.log(dist, [city]);
         if (dist < tempDist) {
           tempDist = dist;
           const cityParsed = this.cityParse(city);
-          closest = [cityParsed, office];
+          closestOffice = [cityParsed, offices[office].speciality];
+          const offices2 = cities[city];
+          specialities = [];
+          Object.keys(offices2).forEach(office2 => {
+            specialities.push(offices2[office2].speciality);
+          });
         }
       });
     });
-    this.closestOffice = closest;
+    this.closestOfficeCity = closestOffice[0];
+    this.closestOfficeSpecialityArr = this.specialityParse(specialities.reduce((a, b) => a.concat(b)));
+    this.FATSpeciality = this.closestOfficeSpecialityArr[0].join(', ');
+    this.GSpeciality = this.closestOfficeSpecialityArr[1][0];
     this.distance = tempDist;
   }
   cityParse(city) {
     return city.replace(/_/g, ' ').replace(/\$/, ', ');
+  }
+  specialityParse(arr) {
+    const specialityDesc: string[][] = [[], []];
+    arr.forEach(el => {
+      switch (el) {
+        case 'FA':
+          specialityDesc[0].push('Finance and Accounting');
+          break;
+        case 'T':
+          specialityDesc[0].push('Technology');
+           break;
+        case 'G':
+          specialityDesc[1].push('Government Services');
+      }
+    });
+    return specialityDesc;
   }
   errorFunc = (error) => {
     this.showError(error);

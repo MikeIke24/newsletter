@@ -1,5 +1,10 @@
-<h1>
-  {{title}}
-</h1>
+<div class="t-center">
+  <h1>
+    {{title}}
+  </h1>
+  <h3>
+    {{closestOfficeCity}} | {{FATSpeciality}}<span *ngIf='GSpeciality'> | {{GSpeciality}}</span>
+  </h3>
+</div>
 
 <app-weather *ngIf='locationSucceeded' [location] = "location"></app-weather>
