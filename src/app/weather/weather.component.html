@@ -1,4 +1,14 @@
-<p *ngIf="weatherLoaded">
+<div class="weather-container" *ngIf="weatherLoaded">
+<p >
   The temperature is {{temp}}&#176;F {{condition}} <i [ngClass]="weatherIconClass"></i>
 </p>
-<div class="weather-icons"></div>
+<p>
+  {{summary}}
+</p>
+<p>
+  Forecast:
+</p>
+<p *ngFor='let day of forecastArr'>
+{{parseTime.getTime(day.time)}} {{ day.summary }}
+</p>
+</div>

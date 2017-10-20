@@ -1,5 +1,7 @@
+import { ParseTimeService } from '../Services/parse-time/parse-time.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { GetWeatherService } from '../Services/get-weather/get-weather.service';
+import { WeatherCondition } from './weather-conditions';
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
@@ -7,12 +9,15 @@ import { GetWeatherService } from '../Services/get-weather/get-weather.service';
 })
 export class WeatherComponent implements OnInit {
   @Input('location') location: string;
+  weatherCondition = new WeatherCondition();
   weatherLoaded = false;
-  temp: number;
   weatherData;
-  weatherIconClass = ['wi', ''];
+  temp: number;
   condition: string;
-  constructor(private getWeather: GetWeatherService) { }
+  summary: string;
+  forecastArr: string[];
+  weatherIconClass = ['wi', ''];
+  constructor(private getWeather: GetWeatherService, public parseTime: ParseTimeService) { }
 
   ngOnInit() {
     this.getWeatherCall();
@@ -26,17 +31,14 @@ export class WeatherComponent implements OnInit {
     this.temp = Math.round(data.currently.temperature);
     this.weatherIconClass[1] = this.setWeatherIcon(data.currently.icon);
     this.condition = this.setCondition(data.currently.icon);
+    this.summary = data.daily.summary;
+    this.forecastArr = data.daily.data;
   }
   setWeatherIcon(icon: string) {
-    return 'wi-day-sunny';
+    console.log(this.weatherCondition.info[icon]);
+    return this.weatherCondition.info[icon][0];
   }
   setCondition(icon: string) {
-    switch (icon) {
-      case 'clear-day':
-        return 'under clear skies';
-      default:
-        break;
-    }
-    return icon;
-  }
+    return this.weatherCondition.info[icon][1];
+}
 }
