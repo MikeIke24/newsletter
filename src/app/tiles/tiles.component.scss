@@ -1,0 +1,69 @@
+#grid-container {
+  display: grid;
+  //grid-template-rows: repeat(3, 1fr);
+  //grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: 
+  "one two three"
+  "four five six"
+  "seven eight nine";
+  width: 100%;
+  height: 85vh;
+  transition:all 0.5s ease;
+  .tile:hover {
+    filter: brightness(0.5);
+  }
+  .tile-1 {
+    background-color: orange !important;
+    grid-area: one;
+    transition:all 0.5s ease;
+  }
+  .tile-2 {
+    background-color: blue !important;
+    grid-area: two;
+    transition:all 0.5s ease;
+  }
+  .tile-3 {
+    background-color: GREEN !important;
+    grid-area: three;
+    transition:all 0.5s ease;
+  }
+  .tile-4 {
+    background-color: yellow !important;
+    grid-area: four;
+    transition:all 0.5s ease;
+  }
+  .tile-5 {
+    background-color: brown !important;
+    grid-area: five;
+    transition:all 0.5s ease;
+  }
+  .tile-6 {
+    background-color: cyan !important;
+    grid-area: six;
+    transition:all 0.5s ease;
+  }
+  .tile-7 {
+    background-color: rgb(255, 0, 212) !important;
+    grid-area: seven;
+    transition:all 0.5s ease;
+  }
+  .tile-8 {
+    background-color: rgb(134, 39, 68) !important;
+    grid-area: eight;
+    transition:all 0.5s ease;
+  }
+  .tile-9 {
+    background-color: rgb(214, 149, 28) !important;
+    grid-area: nine;
+    transition:all 0.5s ease;
+  }
+}
+#active-box {
+  position: absolute;
+  width:100px;
+  height:100px;
+  background-color: black;
+  top:50;
+  left:0;
+  z-index:100;
+}

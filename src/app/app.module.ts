@@ -10,7 +10,7 @@ import { GetWeatherService } from './Services/get-weather/get-weather.service';
 import { ParseTimeService } from './Services/parse-time/parse-time.service';
 
 import { AppComponent } from './app.component';
-import { WeatherComponent } from './weather/weather.component';
+import { WeatherComponent } from './tiles/weather/weather.component';
 import { TilesComponent } from './tiles/tiles.component';
 
 

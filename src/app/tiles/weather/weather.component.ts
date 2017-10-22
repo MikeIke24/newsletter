@@ -1,6 +1,6 @@
-import { ParseTimeService } from '../Services/parse-time/parse-time.service';
+import { ParseTimeService } from '../../Services/parse-time/parse-time.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { GetWeatherService } from '../Services/get-weather/get-weather.service';
+import { GetWeatherService } from '../../Services/get-weather/get-weather.service';
 import { WeatherCondition } from './weather-conditions';
 @Component({
   selector: 'app-weather',
