@@ -1,4 +1,4 @@
-$tilesHeight:92vh;
+$tilesHeight:95vh;
 .contain {
   height: 100vh;
   .header {
@@ -10,8 +10,14 @@ $tilesHeight:92vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    h1,h3{
-      font-weight: 100;
+
+    .title{
+      font-size:1.3rem;
+      font-weight:100;
+    }
+    .office{
+      font-size:1rem;
+      font-weight:100;
     }
   }
   app-tiles {

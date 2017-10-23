@@ -1,12 +1,12 @@
 <div class="contain">
   <div class="header">
-      <h1>
+      <h1 class="title">
         {{title}}
       </h1>
-      <h3 *ngIf="locationSucceeded">
+      <h2 class="office" *ngIf="locationSucceeded" >
         {{closestOfficeCity}} | {{FATSpeciality}}
         <span *ngIf='GSpeciality'> | {{GSpeciality}}</span>
-      </h3>
+      </h2>
   </div>
   <app-tiles *ngIf='locationSucceeded' [location]="location"></app-tiles>
 </div>

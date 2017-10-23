@@ -8,34 +8,43 @@ import { Component, OnInit, Input, ViewEncapsulation, ElementRef, Renderer2 } fr
 })
 export class TilesComponent implements OnInit {
   @Input('location') location: string;
-  showTileShrinkBtn = false;
   tileOpen = false;
   el;
+  btn;
+  btnStyle;
   constructor(elementRef: ElementRef, renderer: Renderer2) { }
 
   ngOnInit() {
+    this.btn = document.getElementById('shrink-button');
+    this.btnStyle = this.btn.style;
   }
 
   expand(event) {
     this.tileOpen = true;
-    this.showTileShrinkBtn = true;
     this.el = event.path[0].style;
     this.el.zIndex = '2';
     this.el.width = '100%';
-    this.el.height = '100%';
-    this.el.top = '0%';
+    this.el.height = '100vh';
+    this.el.top = '-5vh';
     this.el.left = '0%';
+
+    //this.btnStyle.right = '2rem';
+    this.btnStyle.bottom = '2rem';
   }
   shrink() {
     this.el.width = '';
     this.el.height = '';
     this.el.top = '';
     this.el.left = '';
+
+    //this.btnStyle.right = '-2rem';
+    this.btnStyle.bottom = '-4rem';
     setTimeout(() => {
       this.el.zIndex = '0';
     }, 500);
   }
   shrinkButtonLogic() {
+    let el = document.getElementById('button');
     /*
     if (!this.tileOpen) {
       // remove event listener
@@ -47,7 +56,6 @@ export class TilesComponent implements OnInit {
     }
       */
     if (this.tileOpen) {
-      this.showTileShrinkBtn = false;
       this.shrink();
     }
   }
