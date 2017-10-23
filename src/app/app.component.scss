@@ -10,7 +10,6 @@ $tilesHeight:95vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
-
     .title{
       font-size:1.3rem;
       font-weight:100;
@@ -22,5 +21,30 @@ $tilesHeight:95vh;
   }
   app-tiles {
     height:$tilesHeight;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .title {
+      font-size: 1.1rem !important;
+  }
+  .office{
+    font-size:0.9rem !important;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .title {
+      font-size: 0.9rem !important;
+  }
+  .office{
+    font-size:0.7rem !important;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .title {
+      font-size: 0.7rem !important;
+  }
+  .office{
+    font-size:0.5rem !important;
   }
 }
