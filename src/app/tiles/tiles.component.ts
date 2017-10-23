@@ -9,6 +9,7 @@ import { Component, OnInit, Input, ViewEncapsulation, ElementRef, Renderer2 } fr
 export class TilesComponent implements OnInit {
   @Input('location') location: string;
   tileOpen = false;
+  allowExpand = true;
   el;
   btn;
   btnStyle;
@@ -20,27 +21,27 @@ export class TilesComponent implements OnInit {
   }
 
   expand(event) {
-    this.tileOpen = true;
+    if (this.allowExpand) {
+    this.allowExpand = false;
     this.el = event.path[0].style;
     this.el.zIndex = '2';
     this.el.width = '100%';
     this.el.height = '100vh';
-    this.el.top = '-5vh';
+    this.el.top = '0%';
     this.el.left = '0%';
-
-    //this.btnStyle.right = '2rem';
-    this.btnStyle.bottom = '2rem';
+    this.tileOpen = true;
+    this.btnStyle.right = '2rem';
+    }
   }
   shrink() {
     this.el.width = '';
     this.el.height = '';
     this.el.top = '';
     this.el.left = '';
-
-    //this.btnStyle.right = '-2rem';
-    this.btnStyle.bottom = '-4rem';
+    this.btnStyle.right = '-4rem';
     setTimeout(() => {
       this.el.zIndex = '0';
+      this.allowExpand = true;
     }, 500);
   }
   shrinkButtonLogic() {
