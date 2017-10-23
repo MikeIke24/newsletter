@@ -1,15 +1,20 @@
+$tilesHeight:92vh;
 .contain {
   height: 100vh;
-  .t-center {
-    text-align: center;
-  }
   .header {
+    text-align:center;
     padding:1rem 0;
-    background-color:rgb(18, 59, 124);
+    background-color:#031926;;
     color:white;
-    height:15vh;
+    height:(100vh-$tilesHeight);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    h1,h3{
+      font-weight: 100;
+    }
   }
   app-tiles {
-    height:85vh;
+    height:$tilesHeight;
   }
 }

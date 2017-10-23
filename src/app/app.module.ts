@@ -12,6 +12,7 @@ import { ParseTimeService } from './Services/parse-time/parse-time.service';
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './tiles/weather/weather.component';
 import { TilesComponent } from './tiles/tiles.component';
+import { TileShrinkButtonComponent } from './tiles/tile-shrink-button/tile-shrink-button.component';
 
 
 
@@ -19,7 +20,8 @@ import { TilesComponent } from './tiles/tiles.component';
   declarations: [
     AppComponent,
     WeatherComponent,
-    TilesComponent
+    TilesComponent,
+    TileShrinkButtonComponent
   ],
   imports: [
     BrowserModule,

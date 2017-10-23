@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-tiles',
@@ -8,36 +8,47 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 })
 export class TilesComponent implements OnInit {
   @Input('location') location: string;
-  width = '100';
-  height = '100';
-  constructor() { }
+  showTileShrinkBtn = false;
+  tileOpen = false;
+  el;
+  constructor(elementRef: ElementRef, renderer: Renderer2) { }
 
   ngOnInit() {
   }
 
   expand(event) {
-    let el = document.getElementById('grid-container');
-    el.style.setProperty('grid-template-areas', `two`);
-    let tn = document.getElementById('tech-news');
-    tn.style.height = '85vh';
-    tn.style.width = '100vw';
-   // el.style.setProperty('grid-template-rows', `1fr`);
-    //el.style.setProperty('grid-template-columns', `1fr`);
+    this.tileOpen = true;
+    this.showTileShrinkBtn = true;
+    this.el = event.path[0].style;
+    this.el.zIndex = '2';
+    this.el.width = '100%';
+    this.el.height = '100%';
+    this.el.top = '0%';
+    this.el.left = '0%';
+  }
+  shrink() {
+    this.el.width = '';
+    this.el.height = '';
+    this.el.top = '';
+    this.el.left = '';
+    setTimeout(() => {
+      this.el.zIndex = '0';
+    }, 500);
+  }
+  shrinkButtonLogic() {
     /*
-    console.log(event.path[0]);
-    const height = (event.path[0].scrollHeight);
-    const width = (event.path[0].scrollWidth);
-    const el = event.path[0];
-    const top = (el.offsetTop - el.scrollTop + el.clientTop - 1);
-    const left = (el.offsetLeft - el.scrollLeft + el.clientLeft);
-    let el2 = document.getElementById('active-box');
-    console.log(el);
-    //this.setStyles(top, left, height, width);
-    el2.style.top = `${top}px`;
-    el2.style.left = `${left}px`;
-    el2.style.height = `${height+1}px`;
-    el2.style.width = `${width}px`;
-    el2.style.display = 'block';
-*/
+    if (!this.tileOpen) {
+      // remove event listener
+    }
+    else {
+      let simple = this.renderer.listen(elementRef.nativeElement, 'click', (evt) => {
+        console.log('Clicking the button', evt);
+      });
+    }
+      */
+    if (this.tileOpen) {
+      this.showTileShrinkBtn = false;
+      this.shrink();
+    }
   }
 }

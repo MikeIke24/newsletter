@@ -1,6 +1,5 @@
 <div class="contain">
   <div class="header">
-    <div class="t-center">
       <h1>
         {{title}}
       </h1>
@@ -8,9 +7,6 @@
         {{closestOfficeCity}} | {{FATSpeciality}}
         <span *ngIf='GSpeciality'> | {{GSpeciality}}</span>
       </h3>
-    </div>
   </div>
-
   <app-tiles *ngIf='locationSucceeded' [location]="location"></app-tiles>
-
 </div>
