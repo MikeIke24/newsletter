@@ -45,8 +45,8 @@ export class AppComponent {
     let closestOffice: string[];
     const curLat = this.location[0];
     const curLong = this.location[1];
-     // curLat = 37.988102;
-     // curLong =  -103.594792;
+    // let curLat = 27.9565429;
+    // let curLong =  -82.4265217;
     Object.keys(cities).forEach((city) => {
       const offices = cities[city];
       Object.keys(offices).forEach((office) => {

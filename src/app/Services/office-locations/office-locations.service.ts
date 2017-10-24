@@ -401,7 +401,7 @@ export class OfficeLocationsService {
     },
     Seatle$Washington: {
       0: {
-        coords: [27.961510, -82.449364],
+        coords: [47.620688, -122.189698],
         address: '1120 112th Ave., NE Suite 450 Bellevue, Washington 98004',
         phone: '(425) 803-7100',
         speciality: ['T']
@@ -463,5 +463,5 @@ export class OfficeLocationsService {
         speciality: ['FA', 'T']
       }
     }
-  }
+  };
 }
