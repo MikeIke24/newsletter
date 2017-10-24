@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-tiles',
@@ -7,7 +7,9 @@ import { Component, OnInit, Input, ViewEncapsulation, ElementRef, Renderer2 } fr
   encapsulation: ViewEncapsulation.None
 })
 export class TilesComponent implements OnInit {
+  @ViewChild('weather') child;
   @Input('location') location: string;
+  transTime = '0.5s';
   tileOpen = false;
   allowExpand = true;
   el;
@@ -36,16 +38,21 @@ export class TilesComponent implements OnInit {
     if (this.allowExpand) {
     this.allowExpand = false;
     this.el = event.path[0].style;
+    this.el.transition = `all ${this.transTime} cubic-bezier(.31,.26,.38,.95)`;
     this.el.zIndex = '2';
     this.el.width = '100%';
     this.el.height = `${this.windowHeight}px`;
     this.el.top = `-${this.header.offsetHeight}px`;
     this.el.left = '0%';
-    this.tileOpen = true;
     this.btnStyle.right = '2rem';
+    setTimeout(() => {
+      this.el.transition = '';
+      this.tileOpen = true;
+    }, 500);
     }
   }
   shrink() {
+    this.el.transition = `all ${this.transTime} cubic-bezier(.31,.26,.38,.95)`;
     this.el.width = '';
     this.el.height = '';
     this.el.top = '';

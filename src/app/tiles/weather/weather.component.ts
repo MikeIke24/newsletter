@@ -23,7 +23,7 @@ export class WeatherComponent implements OnInit {
     this.getWeatherCall();
   }
   getWeatherCall(): void {
-    //this.getWeather.getWeather(this.location[0], this.location[1]).then(data => this.onSuccess(data));
+    this.getWeather.getWeather(this.location[0], this.location[1]).then(data => this.onSuccess(data));
   }
   onSuccess(data) {
     console.log(data);
