@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { WeatherComponent } from './tiles/weather/weather.component';
 import { TilesComponent } from './tiles/tiles.component';
 import { TileShrinkButtonComponent } from './tiles/tile-shrink-button/tile-shrink-button.component';
+import { SettingsButtonComponent } from './tiles/settings-button/settings-button.component';
 
 
 
@@ -21,7 +22,8 @@ import { TileShrinkButtonComponent } from './tiles/tile-shrink-button/tile-shrin
     AppComponent,
     WeatherComponent,
     TilesComponent,
-    TileShrinkButtonComponent
+    TileShrinkButtonComponent,
+    SettingsButtonComponent
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,14 @@
 <div id="grid-container">
-  <div id="weather" class="tile tile-1" (click)="expand($event)"><app-weather (click)="expand($event)" [location] = "location"></app-weather></div>
-  <div id="tech-news" class="tile tile-2" (click)="expand($event)">Tech News</div>
-  <div id="finace-news" class="tile tile-3" (click)="expand($event)">Finance News</div>
-  <div id="events" class="tile tile-4" (click)="expand($event)">Events</div>
-  <div id="jobs" class="tile tile-5" (click)="expand($event)">Jobs</div>
-  <div id="calender" class="tile tile-6" (click)="expand($event)">Calender</div>
-  <div id="question" class="tile tile-7" (click)="expand($event)">Question</div>
-  <div id="puzzle" class="tile tile-8" (click)="expand($event)">Puzzle</div>
-  <div id="recruiter" class="tile tile-9" (click)="expand($event)">Recruiter</div>
+  <div id="weather" class="tile tile-1" (mouseenter)="tileHoverIn($event)" (mouseleave)="tileHoverOut($event)" (click)="expand($event)"><app-weather (click)="expand($event)" [location] = "location"></app-weather></div>
+  <div id="tech-news" class="tile tile-2" (mouseenter)="tileHoverIn($event)" (mouseleave)="tileHoverOut($event)" (click)="expand($event)">Tech News</div>
+  <div id="finace-news" class="tile tile-3" (mouseenter)="tileHoverIn($event)" (mouseleave)="tileHoverOut($event)" (click)="expand($event)">Finance News</div>
+  <div id="events" class="tile tile-4" (mouseenter)="tileHoverIn($event)" (mouseleave)="tileHoverOut($event)" (click)="expand($event)">Events</div>
+  <div id="jobs" class="tile tile-5" (mouseenter)="tileHoverIn($event)" (mouseleave)="tileHoverOut($event)" (click)="expand($event)">Jobs</div>
+  <div id="calender" class="tile tile-6" (mouseenter)="tileHoverIn($event)" (mouseleave)="tileHoverOut($event)" (click)="expand($event)">Calender</div>
+  <div id="question" class="tile tile-7" (mouseenter)="tileHoverIn($event)" (mouseleave)="tileHoverOut($event)" (click)="expand($event)">Question</div>
+  <div id="puzzle" class="tile tile-8" (mouseenter)="tileHoverIn($event)" (mouseleave)="tileHoverOut($event)" (click)="expand($event)">Puzzle</div>
+  <div id="recruiter" class="tile tile-9" (mouseenter)="tileHoverIn($event)" (mouseleave)="tileHoverOut($event)" (click)="expand($event)">Recruiter</div>
 </div>
 
 <app-tile-shrink-button (click)="shrinkButtonLogic()"></app-tile-shrink-button>
-
-
+<app-settings-button></app-settings-button>
