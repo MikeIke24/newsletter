@@ -43,7 +43,7 @@ export class TilesComponent implements OnInit {
   tileHoverIn(event) {
     if (this.allowHoverEffect) {
       this.hovEl = event.path[0].style;
-      this.hovEl.filter = 'brightness(0.6)';
+      this.hovEl.filter = 'brightness(0.7)';
     }
   }
   tileHoverOut(event) {
@@ -52,11 +52,17 @@ export class TilesComponent implements OnInit {
     }
   }
   expand(event) {
+    console.log(event);
     if (this.allowExpand) {
     this.allowExpand = false;
     this.allowHoverEffect = false;
     this.hovEl.filter = '';
-    this.el = event.path[0].style;
+    if (event.path[0].classList[0] !== 'tile'){
+      this.el = event.path[3].style;
+    }
+    else {
+      this.el = event.path[0].style;
+    }
     this.el.transition = `all ${this.transTime} cubic-bezier(.31,.26,.38,.95)`;
     this.el.zIndex = '2';
     this.el.width = '100%';
